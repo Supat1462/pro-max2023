@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
-import AddEmployee from './add_member';
-import ModalEmployee from './ModalAddEmployee';
+import AddMember from './add_member';
+import ModalMember from './ModalAddEmployee';
 import MemberTable from './member_table';
 import AddButton from './add_button_member';
 import AddForm from './add_member_form';
 
-function Employee() {
+function Member() {
 
     // funtion open Modal AddEmployee
     const [isOpen, setIsOpen] = useState(false);
@@ -49,4 +49,4 @@ function Employee() {
     )
 }
 
-export default Employee
+export default Member
