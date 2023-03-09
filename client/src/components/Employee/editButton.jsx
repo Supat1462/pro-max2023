@@ -2,7 +2,7 @@ import React from 'react';
 
 const EditButton = ({ onClick }) => {
   return (
-    <button onClick={onClick}>Edit</button>
+    <button onClick={onClick}>แก้ไขข้อมูล</button>
   );
 }
 

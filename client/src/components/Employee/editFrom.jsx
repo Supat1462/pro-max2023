@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const EditForm = ({ employee, onClose }) => {
+const EditForm = ({ isOpen, employee, onClose }) => {
   const [name, setName] = useState(employee.name);
   const [email, setEmail] = useState(employee.email);
 
@@ -18,9 +18,10 @@ const EditForm = ({ employee, onClose }) => {
     onClose();
   }
 
+
   return (
-    <div>
-      <h2>Edit Employee</h2>
+    <div className="mt-10 sm:mt-0">
+      <h2 className="lg:text-2xl sm1:text-xl mb-4 text-indigo-700 font-bold">ข้อมูลพนักงาน</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Name:

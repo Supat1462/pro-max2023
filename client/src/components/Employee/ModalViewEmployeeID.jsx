@@ -1,19 +1,24 @@
 import React, { useState, useEffect } from "react";
 
 
-const ModalViewEmployee = ({ isOpen, onClose, emy }) => {
+const ModalViewEmployee = ({ isOpen, employee, onClose }) => {
+
+    const [IDEmployee, setIDEmployee] = useState(employee.IDEmployee);
+    const [name, setName] = useState(employee.name);
+    const [department, setdepartment] = useState(employee.department);
+    const [location, setlocation] = useState(employee.location);
+    const [StatusEmployee, setStatusEmployee] = useState(employee.StatusEmployee);
+
     const handleClose = () => {
         onClose();
     };
 
+
+    
+
     // Date
     // const date = new Date();
 
-    const [data, setData] = useState(null);
-    const [id, setId] = useState('');
-    const [modalIsOpen, setModalIsOpen] = useState(false);
-
-    
     return (
         <>
             {isOpen && (
@@ -43,29 +48,27 @@ const ModalViewEmployee = ({ isOpen, onClose, emy }) => {
                                 <div className="overflow-hidden shadow sm:rounded-md">
                                     <div className="bg-white px-4 py-5 sm:p-6">
                                         <div className="border-t border-gray-200">
-
-                                            
                                             <dl>
                                                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                     <dt className="text-sm font-medium text-gray-500">รหัสพนักงาน</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{emy.IDEmployee}</dd>
+                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{IDEmployee}</dd>
                                                 </div>
                                                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                     <dt className="text-sm font-medium text-gray-500">ชื่อ - นามสกุล</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{emy.name}</dd>
+                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{name}</dd>
                                                 </div>
                                                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                     <dt className="text-sm font-medium text-gray-500">แผนก</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{emy.department}</dd>
+                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{department}</dd>
                                                 </div>
                                                 <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                     <dt className="text-sm font-medium text-gray-500">สำนักงาน</dt>
-                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{emy.location}</dd>
+                                                    <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">{location}</dd>
                                                 </div>
                                                 <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
                                                     <dt className="text-sm font-medium text-gray-500">สถานะ</dt>
                                                     <dd className="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                                                    {emy.StatusEmployee}
+                                                        {StatusEmployee}
                                                     </dd>
                                                 </div>
                                             </dl>

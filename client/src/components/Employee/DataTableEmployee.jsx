@@ -1,17 +1,21 @@
 import Axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import ModalViewEmployee from './ModalViewEmployeeID';
-import Modal from 'react-modal';
 import EditButton from './editButton';
 import EditForm from './editFrom';
+import ViewButton from './ViewButton';
 
 
 
-const DataTableEmployee = ({ id }) => {
+const DataTableEmployee = () => {
 
   // 
   const [showModal, setShowModal] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
+  const handleViewClick = (val) => {
+    setSelectedEmployee(val);
+    setShowModal(true);
+  }
 
   const handleEditClick = (val) => {
     setSelectedEmployee(val);
@@ -22,19 +26,6 @@ const DataTableEmployee = ({ id }) => {
     setShowModal(false);
   }
 
-
-
-
-  // funtion open ModalViewEmployee
-  const [modalIsOpen, setModalIsOpen] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
-
-  const handleOpenModal = () => {
-    setIsOpen(true);
-  };
-  const handleCloseModal = () => {
-    setIsOpen(false);
-  };
 
   // Array Employee
   const [employeeList, setEmployeeList] = useState([]);
@@ -54,17 +45,6 @@ const DataTableEmployee = ({ id }) => {
   }
 
 
-
-
-  // show data id in modal
-  useEffect(() => {
-    async function fetchemployeeList() {
-      const response = await fetch(`/employee/${id}`);
-      const data = await response.json();
-      setEmployeeList(data);
-    }
-    fetchemployeeList();
-  }, [id]);
 
   // show data table employee
 
@@ -121,23 +101,24 @@ const DataTableEmployee = ({ id }) => {
                 <td className='boder px-4 py-2'>{val.StatusEmployee}</td>
                 <td className='boder py-2 flex justify-center gap-1'>
                   <td>
+                    <ViewButton onClick={() => handleViewClick(val)} />
+                  </td>
+                  <td>
                     <EditButton onClick={() => handleEditClick(val)} />
                   </td>
 
-
-                  <button className=''>อัพเดท</button>
-                  
                   <button className='bg-red-700 hover:text-red-700 border-red-700' onClick={() => { deleteEmployee(val.id) }}>ลบข้อมูล</button>
                 </td>
               </tr>
             )
           })}
         </tbody>
-        
+
       </table>
       {showModal && (
         <EditForm employee={selectedEmployee} onClose={handleModalClose} />
       )}
+     
     </div>
   )
     ;
