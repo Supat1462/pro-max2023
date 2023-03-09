@@ -8,7 +8,7 @@ const navigation = [
   { name: 'Dashboard', href: '/Device', current: false },
   { name: 'Borrow - Return', href: '/BorrowandReturn', current: false },
   { name: 'Device', href: '/Device', current: false },
-  { name: 'Employee', href: '/Employee', current: false },
+  { name: 'Employee', href: '/Member', current: false },
 ]
 
 

@@ -3,9 +3,9 @@ import BorrowandReturn from './components/Content/BorrowandReturn';
 import { Route, Routes } from "react-router-dom"
 import Home from './components/Home/Home';
 import Device from './components/Device/Device';
-import Employee from './components/Employee/Employee';
+import Member from './components/Member/main_member';
 import Footer from './components/Footer/Footer';
-import EditeEmployee from './components/Employee/EditeEmployee';
+
 
 function App() {
   return (
@@ -16,8 +16,8 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='/BorrowandReturn' element={<BorrowandReturn />} />
         <Route path='/Device' element={<Device />} />
-        <Route path='/Employee' element={<Employee />} />
-        <Route path='/EditEmployee/:id' element={<EditeEmployee />} />
+        <Route path='/Member' element={<Member />} />
+       
       </Routes>
 
       <Footer />
