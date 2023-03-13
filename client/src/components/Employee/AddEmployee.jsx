@@ -39,8 +39,10 @@ function AddEmployee() {
     }
 
     return (
-        <div className="mt-10 sm:mt-0">
-            <h2 className="lg:text-2xl sm1:text-xl mb-4 text-indigo-700 font-bold">ข้อมูลพนักงาน</h2>
+        <div>
+            <div className="px-4 py-5 sm:px-6">
+                <h3 className="lg:text-2xl sm1:text-xl mb-4 text-indigo-700 font-bold">เพิ่มมูลพนักงาน</h3>
+            </div>
             <form>
                 <div className="overflow-hidden shadow sm:rounded-md">
                     <div className="bg-white px-4 py-5 sm:p-6">
@@ -94,12 +96,13 @@ function AddEmployee() {
                                         setdepartment(event.target.value)
                                     }}
                                 >
-                                    <option value={"default"} selected disabled hidden>Select an Option</option>
+                                    <option value={"default"}>--โปรดเลือกแผนกพนักงาน--</option>
                                     <option value="Accounting & Finacial">Accounting and Finance</option>
                                     <option value="HR">HR</option>
                                     <option value="IT">IT</option>
                                     <option value="Managment">Managment</option>
                                     <option value="Marketing">Marketing</option>
+                                    <option value="Operation">Operation</option>
                                 </select>
                             </div>
 
@@ -118,7 +121,7 @@ function AddEmployee() {
                                         setlocation(event.target.value)
                                     }}
                                 >
-                                    <option value={"default"} selected disabled hidden>Select an Option</option>
+                                    <option value="default">--โปรดเลือกสำนักงาน--</option>
                                     <option value="ฟอร์รั่ม ทาวน์เวอร์">ฟอร์รั่ม ทาวน์เวอร์</option>
                                     <option value="ลาซาล">ลาซาล</option>
                                     <option value="ขอนแก่น">ขอนแก่น</option>

@@ -3,8 +3,16 @@ const app = express();
 const mysql = require('mysql');
 const cors = require('cors');
 
+const bodyparser = require('body-parser')
+
+const { loggerAPI } = require('./logger/logger')
+
+
+app.use(bodyparser.urlencoded({ extended: true }))
+app.use(bodyparser.json())
+app.use(loggerAPI)
 app.use(cors());
-app.use(express.json());
+// app.use(express.json());
 
 const db = mysql.createConnection({
     user: 'root',
@@ -23,11 +31,29 @@ app.get('/employee', (req, res) => {
     });
 });
 
-app.get('/employees/:id', (req, res) => {
-    const id = parseInt(req.params.id);
-    const employee = employee.find(e => e.id === id);
-    res.json(employee);
-  });
+app.put('/employee/:id', (req, res) => {
+    console.log('put emy', req.body)
+    // console.log(req.body)
+    const id = req.params.id;
+    console.log('id', id)
+    const name = req.body.name
+    console.log('name', name)
+    const IDEmployee = req.body.IDEmployee
+    console.log('idemy', IDEmployee)
+    const department = req.body.department
+    console.log('department', department)
+    const location = req.body.location
+    console.log('location', location)
+    const StatusEmployee = req.body.StatusEmployee
+    console.log('StatusEmployee', StatusEmployee)
+    const query = `UPDATE employee SET name = '${name}', IDEmployee = '${IDEmployee}', department ='${department}',  location ='${location}',   StatusEmployee ='${StatusEmployee}' WHERE id = '${id}'`;
+
+    db.query(query, function (error, results, fields) {
+        if (error) throw error;
+        res.send('Data updated successfully!');
+    });
+});
+
 
 app.post('/create', (req, res) => {
     const name = req.body.name;
@@ -47,15 +73,6 @@ app.post('/create', (req, res) => {
     );
 })
 
-app.put('/employee', function (req, res, next) {
-    connection.query(
-        'UPDATE `employee` SET `name`= ?, `IDEmployee`= ?, `department`= ?, `department`= ?, `location`= ?, `StatusEmployee` = ? WHERE id = ?',
-        [req.body.name, req.body.IDEmployee, req.body.department, req.body.department, req.body.location, req.body.StatusEmployee],
-        function (err, results) {
-            res.json(results);
-        }
-    );
-})
 
 
 app.delete('/delete/:id', (req, res) => {

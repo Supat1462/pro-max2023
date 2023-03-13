@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import EditButton from './editButton';
 import EditForm from './editFrom';
 import ViewButton from './ViewButton';
+import ViewFrom from './ViewFrom';
 
 
 
@@ -10,11 +11,14 @@ const DataTableEmployee = () => {
 
   // 
   const [showModal, setShowModal] = useState(false);
+  const [ViewModal, setViewModal] = useState(false);
   const [selectedEmployee, setSelectedEmployee] = useState(null);
+
 
   const handleViewClick = (val) => {
     setSelectedEmployee(val);
-    setShowModal(true);
+    setViewModal(true);
+    console.log('setselect',selectedEmployee)
   }
 
   const handleEditClick = (val) => {
@@ -26,6 +30,10 @@ const DataTableEmployee = () => {
     setShowModal(false);
   }
 
+  const handleViewModalClose = () => {
+    setViewModal(false);
+  }
+
 
   // Array Employee
   const [employeeList, setEmployeeList] = useState([]);
@@ -33,7 +41,7 @@ const DataTableEmployee = () => {
 
   // button delete employeeList
   const deleteEmployee = (id) => {
-    console.log(id);
+    // console.log(id);
     Axios.delete(`http://localhost:3001/delete/${id}`).then((response) => {
       setEmployeeList(
         employeeList.filter((val) => {
@@ -58,7 +66,7 @@ const DataTableEmployee = () => {
         (result) => {
           setIsLoaded(true);
           setEmployeeList(result);
-          console.log(result);
+          // console.log(result);
         },
         (error) => {
           setIsLoaded(true);
@@ -90,10 +98,12 @@ const DataTableEmployee = () => {
           </tr>
         </thead>
         <tbody className="text-gray-700">
-          {employeeList.map((val, key) => {
+          {employeeList.map((val, index, row) => {
             return (
-              <tr className='sm1:text-xs lg:text-sm'>
-                <td className='boder px-2 py-2'>{val.id}</td>
+              <tr
+              className='sm1:text-xs lg:text-sm border-2'
+              key={row.IDEmployee}>
+                <td className='boder px-2 py-2'>{index + 1}</td>
                 <td className='boder px-4 py-2'>{val.IDEmployee}</td>
                 <td className='boder px-4 py-2'>{val.name}</td>
                 <td className='boder px-4 py-2'>{val.department}</td>
@@ -118,7 +128,14 @@ const DataTableEmployee = () => {
       {showModal && (
         <EditForm employee={selectedEmployee} onClose={handleModalClose} />
       )}
-     
+
+
+      {ViewModal && (
+        <ViewFrom employee={selectedEmployee} onClose={handleViewModalClose} />
+      )}
+
+
+
     </div>
   )
     ;
