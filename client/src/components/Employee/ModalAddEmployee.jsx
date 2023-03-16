@@ -8,8 +8,8 @@ const ModalAddEmployee = ({ isOpen, onClose, children }) => {
     return (
         <>
             {isOpen && (
-                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 max-h-full">
-                    <div className="overflow-hidden bg-white shadow rounded-lg relative lg:mx-56 lg:w-[700px] sm1:w-[800px]">
+                <div className="fixed inset-0 bg-gray-500 bg-opacity-75 z-50">
+                    <div className="relative overflow-hidden bg-white shadow rounded-lg lg:m-32 m-6 py-6 px-6 sm:p-6 md:py-10 md:px-8">
                         <button className="absolute top-0 right-0 m-4 hover:bg-white hover:text-indigo-700" onClick={handleClose}>
                             <svg
                                 className="w-6 h-6 text-whit"

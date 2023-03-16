@@ -1,30 +1,34 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-const EditForm = ({ employee, onClose }) => {
-  const [name, setName] = useState(employee.name);
-  const [IDEmployee, setIDEmployee] = useState(employee.IDEmployee);
-  const [department, setdepartment] = useState(employee.department);
-  const [location, setlocation] = useState(employee.location);
-  const [StatusEmployee, setStatusEmployee] = useState(employee.StatusEmployee);
+const EditForm = ({ data, onClose }) => {
+  const [NameTH, setNameTH] = useState(data.NameTH);
+  const [SurnameTH, setSurnameTH] = useState(data.SurnameTH);
+  const [Emp_Code, setEmp_Code] = useState(data.Emp_Code);
+  const [Nickname, setNickname] = useState(data.Nickname);
+  const [Department, setDepartment] = useState(data.Department);
+  const [Branch, setBranch] = useState(data.Branch);
+  const [Status, setStatus] = useState(data.Status);
 
 
-  // console.log('ttttttt', employee)
+  // console.log('ttttttt', data)
   const handleUpdate = (event) => {
     event.preventDefault();
-    const id = employee.id
+    const id = data.id
     const updatedEmployee = {
-      IDEmployee: IDEmployee,
-      name: name,
-      department: department,
-      location: location,
-      StatusEmployee: StatusEmployee,
+      Emp_Code: Emp_Code,
+      NameTH: NameTH,
+      SurnameTH: SurnameTH,
+      Nickname: Nickname,
+      Department: Department,
+      Branch: Branch,
+      Status: Status,
 
     };
 
     // console.log(updatedEmployee.id);
 
-    axios.put(`http://localhost:3001/employee/${id}`, updatedEmployee)
+    axios.put(`http://localhost:3001/table_name/${id}`, updatedEmployee)
       .then(response => console.log(response.data))
       .catch(error => console.log(error));
     onClose();
@@ -57,7 +61,7 @@ const EditForm = ({ employee, onClose }) => {
         </button>
 
 
-        <div className="mt-10 sm:mt-0">
+        <div className="">
           <h2 className="lg:text-2xl sm1:text-xl mb-4 text-indigo-700 font-bold">แก้ไขข้อมูลพนักงาน</h2>
           <form onSubmit={handleUpdate}>
             <div className="overflow-hidden shadow sm:rounded-md">
@@ -71,9 +75,9 @@ const EditForm = ({ employee, onClose }) => {
                       type="text"
                       autoComplete="given-name"
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                      value={IDEmployee}
+                      value={Emp_Code}
                       onChange={e => {
-                        setIDEmployee(e.target.value)
+                        setEmp_Code(e.target.value)
                         // console.log('IDEmployee', IDEmployee)
                       }}
                     />
@@ -81,78 +85,107 @@ const EditForm = ({ employee, onClose }) => {
 
                   <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="name-employee" className="block text-sm font-medium text-gray-700">
-                      ชื่อ - นามสกุล
+                      ชื่อ
                     </label>
                     <input
                       type="text"
-                      value={name}
+                      value={NameTH}
                       className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                       onChange={e => {
-                        setName(e.target.value)
+                        setNameTH(e.target.value)
+                        // console.log('NameEmy', name)
+                      }}
+                    />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="name-employee" className="block text-sm font-medium text-gray-700">
+                      นามสกุล
+                    </label>
+                    <input
+                      type="text"
+                      value={SurnameTH}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      onChange={e => {
+                        setSurnameTH(e.target.value)
+                        // console.log('NameEmy', name)
+                      }}
+                    />
+                  </div>
+                  <div className="col-span-6 sm:col-span-3">
+                    <label htmlFor="name-employee" className="block text-sm font-medium text-gray-700">
+                      ชื่อเล่น
+                    </label>
+                    <input
+                      type="text"
+                      value={Nickname}
+                      className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                      onChange={e => {
+                        setNickname(e.target.value)
                         // console.log('NameEmy', name)
                       }}
                     />
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="department" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="Department" className="block text-sm font-medium text-gray-700">
                       แผนก
                     </label>
                     <select
-                      id="department"
-                      name="department"
-                      value={department}
-                      autoComplete="department-name"
+                      id="Department"
+                      name="Department"
+                      value={Department}
+                      autoComplete="Department-name"
                       className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       onChange={(event) => {
-                        setdepartment(event.target.value)
+                        setDepartment(event.target.value)
                       }}
                     >
-                      <option value={"default"}>--โปรดเลือกแผนกพนักงาน--</option>
-                      <option value="Accounting & Finacial">Accounting and Finance</option>
-                      <option value="Human Resources">Human Resources</option>
+                      <option value="default">--โปรดเลือกแผนกพนักงาน--</option>
+                      <option value="Accounting & Finance">Accounting & Finance</option>
+                      <option value="Human Resource">Human Resource</option>
                       <option value="Information Technology">Information Technology</option>
-                      <option value="Managment">Managment</option>
-                      <option value="Marketing">Marketing</option>
+                      <option value="Management">Management</option>
+                      <option value="Business Unit">Business Unit</option>
                       <option value="Operation">Operation</option>
                     </select>
                   </div>
 
                   <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="location" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="Branch" className="block text-sm font-medium text-gray-700">
                       สำนักงาน
                     </label>
                     <select
-                      id="location"
-                      name="location"
-                      autoComplete="location-name"
-                      value={location}
+                      id="Branch"
+                      name="Branch"
+                      autoComplete="Branch-name"
+                      value={Branch}
                       className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       onChange={(event) => {
-                        setlocation(event.target.value)
+                        setBranch(event.target.value)
                       }}
                     >
                       <option value="default">--โปรดเลือกสำนักงาน--</option>
-                      <option value="ฟอร์รั่ม ทาวน์เวอร์">ฟอร์รั่ม ทาวน์เวอร์</option>
-                      <option value="ลาซาล">ลาซาล</option>
-                      <option value="ขอนแก่น">ขอนแก่น</option>
-                      <option value="นครสววรค์">นครสววรค์</option>
-                      <option value="บางวัว">บางวัว</option>
+                      <option value="Forum Tower">Forum Tower</option>
+                      <option value="Lasalle">Lasalle</option>
+                      <option value="Khonkaen">Khonkaen</option>
+                      <option value="Nakhon Sawan">Nakhon Sawan</option>
+                      <option value="Chonburi">Chonburi</option>
+                      <option value="Rayong">Rayong</option>
                     </select>
                   </div>
                   <div className="col-span-6 sm:col-span-3">
-                    <label htmlFor="StatusEmployee" className="block text-sm font-medium text-gray-700">
+                    <label htmlFor="Status" className="block text-sm font-medium text-gray-700">
                       สถานะ
                     </label>
                     <select
 
-                      id="StatusEmployee"
-                      name="StatusEmployee"
-                      value={StatusEmployee}
-                      autoComplete="StatusEmployee-name"
+                      id="Status"
+                      name="Status"
+                      value={Status}
+                      autoComplete="Status-name"
                       className="mt-1 block w-full rounded-md border border-gray-300 bg-white py-2 px-3 shadow-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                       onChange={(event) => {
-                        setStatusEmployee(event.target.value)
+                        setStatus(event.target.value)
 
                       }}
                     >
@@ -161,7 +194,6 @@ const EditForm = ({ employee, onClose }) => {
                       <option value="Inactive">Inactive</option>
                       <option value="On Leave">On Leave</option>
                     </select>
-                    <p>Selected employee status: {StatusEmployee}</p>
                   </div>
 
                   <div className="col-span-6 sm:col-span-6 gap-3">
