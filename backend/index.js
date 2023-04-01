@@ -21,7 +21,7 @@ const db = mysql.createConnection({
     database: 'borrow2022'
 })
 
-app.get('/employee', (req, res) => {
+app.get('/table_name', (req, res) => {
     db.query("SELECT * FROM table_name", (err, result) => {
         if (err) {
             console.log(err);
@@ -31,11 +31,13 @@ app.get('/employee', (req, res) => {
     });
 });
 
-app.put('/employee/:id', (req, res) => {
+app.put('/table_name/:id', (req, res) => {
     console.log('put emy', req.body)
     // console.log(req.body)
     const id = req.params.id;
     console.log('id', id)
+    const NameTH = req.body.NameTH
+    console.log('NameTH', NameTH)
     const name = req.body.name
     console.log('name', name)
     const IDEmployee = req.body.IDEmployee
@@ -62,7 +64,7 @@ app.post('/create', (req, res) => {
     const location = req.body.location;
     const StatusEmployee = req.body.StatusEmployee;
 
-    db.query("INSERT INTO employee (name, IDEmployee,department,location,StatusEmployee) VALUES(?,?,?,?,?)", [name, IDEmployee, department, location, StatusEmployee],
+    db.query("INSERT INTO table_name (name, IDEmployee,department,location,StatusEmployee) VALUES(?,?,?,?,?)", [name, IDEmployee, department, location, StatusEmployee],
         (err, result) => {
             if (err) {
                 console.log(err);
@@ -78,7 +80,7 @@ app.post('/create', (req, res) => {
 app.delete('/delete/:id', (req, res) => {
     const id = req.params.id;
     console.log(id);
-    db.query("DELETE FROM employee WHERE id = ?", id, (err, result) => {
+    db.query("DELETE FROM table_name WHERE id = ?", id, (err, result) => {
         if (err) {
             console.log(err)
         } else {

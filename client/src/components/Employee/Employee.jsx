@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import AddEmployee from './AddEmployee';
 import ModalAddEmployee from './ModalAddEmployee';
 import DataTableEmployee from './DataTableEmployee';
+import TableName from './tableName';
 
 
 function Employee() {
@@ -16,7 +17,7 @@ function Employee() {
         setIsOpen(false);
     };
 
-    
+
     return (
         <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 container mt-5 shadow-md rounded-lg py-5 mb-10'>
 
@@ -29,14 +30,13 @@ function Employee() {
                 <button className="text-white font-bold py-2 px-4 rounded lg:text-base sm1:text-sm" onClick={handleOpenModal}>
                     เพิ่มข้อมูลพนักงาน
                 </button>
-                <p className='pt-4 font-bold lg:text-xl sm1:text-sm'>พบจำนวนสมาชิก  รายการ</p>
                 <ModalAddEmployee isOpen={isOpen} onClose={handleCloseModal}>
                     <AddEmployee />
                 </ModalAddEmployee>
 
                 <div className="">
                     {/* table employee */}
-                    <DataTableEmployee />
+                    <TableName />
                 </div>
             </div>
 
