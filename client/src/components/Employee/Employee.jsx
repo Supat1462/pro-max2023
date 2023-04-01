@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import AddEmployee from './AddEmployee';
 import ModalAddEmployee from './ModalAddEmployee';
-import TableName from './tableName';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import DataTableEmployee from './DataTableEmployee';
 
 
 function Employee() {
@@ -24,7 +22,6 @@ function Employee() {
 
             <div className="heder">
                 <h1 className='lg:text-3xl font-bold text-indigo-700 sm1:text-2xl sm1:px-4'>Employee</h1>
-                <FontAwesomeIcon icon="fa-solid fa-user-gear" />
                 <hr className='my-3' />
             </div>
 
@@ -38,8 +35,7 @@ function Employee() {
 
                 <div className="">
                     {/* table employee */}
-                    {/* <DataTableEmployee /> */}
-                    <TableName />
+                    <DataTableEmployee />
                 </div>
             </div>
 
