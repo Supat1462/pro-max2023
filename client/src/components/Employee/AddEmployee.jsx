@@ -48,11 +48,7 @@ function AddEmployee() {
                     <div className="bg-white px-4 py-5 sm:p-6">
                         <div className="grid grid-cols-6 gap-6">
                             <div className="col-span-6 sm:col-span-3">
-<<<<<<< HEAD
                                 <label htmlFor="id-employee" className="block text-sm font-medium text-gray-700">
-=======
-                                <label htmlFor="id-employee" className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-gray-700">
->>>>>>> parent of 80f1eec7 (16/3)
                                     รหัสพนักงาน
                                 </label>
                                 <input
@@ -69,11 +65,7 @@ function AddEmployee() {
                             </div>
 
                             <div className="col-span-6 sm:col-span-3">
-<<<<<<< HEAD
                                 <label htmlFor="name-employee" className="block text-sm font-medium text-gray-700">
-=======
-                                <label htmlFor="name-employee" className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-gray-700">
->>>>>>> parent of 80f1eec7 (16/3)
                                     ชื่อ - นามสกุล
                                 </label>
                                 <input
@@ -90,11 +82,7 @@ function AddEmployee() {
                             </div>
 
                             <div className="col-span-6 sm:col-span-3">
-<<<<<<< HEAD
                                 <label htmlFor="department" className="block text-sm font-medium text-gray-700">
-=======
-                                <label htmlFor="department" className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-gray-700">
->>>>>>> parent of 80f1eec7 (16/3)
                                     แผนก
                                 </label>
                                 <select
@@ -110,13 +98,8 @@ function AddEmployee() {
                                 >
                                     <option value={"default"}>--โปรดเลือกแผนกพนักงาน--</option>
                                     <option value="Accounting & Finacial">Accounting and Finance</option>
-<<<<<<< HEAD
                                     <option value="HR">HR</option>
                                     <option value="IT">IT</option>
-=======
-                                    <option value="Human Resources">Human Resources</option>
-                                    <option value="Information Technology">Information Technology</option>
->>>>>>> parent of 80f1eec7 (16/3)
                                     <option value="Managment">Managment</option>
                                     <option value="Marketing">Marketing</option>
                                     <option value="Operation">Operation</option>
@@ -124,11 +107,7 @@ function AddEmployee() {
                             </div>
 
                             <div className="col-span-6 sm:col-span-3">
-<<<<<<< HEAD
                                 <label htmlFor="location" className="block text-sm font-medium text-gray-700">
-=======
-                                <label htmlFor="location" className="after:content-['*'] after:ml-0.5 after:text-red-500 block text-sm font-medium text-gray-700">
->>>>>>> parent of 80f1eec7 (16/3)
                                     สำนักงาน
                                 </label>
                                 <select

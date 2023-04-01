@@ -111,13 +111,8 @@ const EditForm = ({ employee, onClose }) => {
                     >
                       <option value={"default"}>--โปรดเลือกแผนกพนักงาน--</option>
                       <option value="Accounting & Finacial">Accounting and Finance</option>
-<<<<<<< HEAD
                       <option value="HR">HR</option>
                       <option value="IT">IT</option>
-=======
-                      <option value="Human Resources">Human Resources</option>
-                      <option value="Information Technology">Information Technology</option>
->>>>>>> parent of 80f1eec7 (16/3)
                       <option value="Managment">Managment</option>
                       <option value="Marketing">Marketing</option>
                       <option value="Operation">Operation</option>

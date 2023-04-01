@@ -22,7 +22,7 @@ const db = mysql.createConnection({
 })
 
 app.get('/employee', (req, res) => {
-    db.query("SELECT * FROM employee", (err, result) => {
+    db.query("SELECT * FROM table_name", (err, result) => {
         if (err) {
             console.log(err);
         } else {
@@ -46,7 +46,7 @@ app.put('/employee/:id', (req, res) => {
     console.log('location', location)
     const StatusEmployee = req.body.StatusEmployee
     console.log('StatusEmployee', StatusEmployee)
-    const query = `UPDATE employee SET name = '${name}', IDEmployee = '${IDEmployee}', department ='${department}',  location ='${location}',   StatusEmployee ='${StatusEmployee}' WHERE id = '${id}'`;
+    const query = `UPDATE table_name SET name = '${name}', IDEmployee = '${IDEmployee}', department ='${department}',  location ='${location}',   StatusEmployee ='${StatusEmployee}' WHERE id = '${id}'`;
 
     db.query(query, function (error, results, fields) {
         if (error) throw error;
