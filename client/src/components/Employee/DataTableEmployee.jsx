@@ -15,22 +15,15 @@ const DataTableEmployee = () => {
   const [selectedEmployee, setSelectedEmployee] = useState(null);
 
 
-  // ********************** start page current ********************* //
-
-
-
-
-  // ********************** end page current *********************** //
-
-  // ********************* start button **************************** //
-  const handleEditClick = (employee) => {
-    setSelectedEmployee(employee);
-    setShowModal(true);
+  const handleViewClick = (val) => {
+    setSelectedEmployee(val);
+    setViewModal(true);
+    console.log('setselect',selectedEmployee)
   }
 
-  const handleViewClick = (employee) => {
-    setSelectedEmployee(employee);
-    setViewModal(true);
+  const handleEditClick = (val) => {
+    setSelectedEmployee(val);
+    setShowModal(true);
   }
 
   const handleModalClose = () => {
@@ -40,7 +33,7 @@ const DataTableEmployee = () => {
   const handleViewModalClose = () => {
     setViewModal(false);
   }
-  // ******************** end button ***************************** //
+
 
   // Array Employee
   const [employeeList, setEmployeeList] = useState([]);
@@ -69,18 +62,18 @@ const DataTableEmployee = () => {
   useEffect(() => {
     fetch("http://localhost:3001/employee")
       .then((res) => res.json())
-      .then((data) => {
-        // Sort employee list by IDEmployee
-        data.sort((a, b) => a.IDEmployee - b.IDEmployee);
-        setEmployeeList(data);
-        setIsLoaded(true);
-      })
-      .catch((error) => {
-        setIsLoaded(true);
-        setError(error);
-      });
+      .then(
+        (result) => {
+          setIsLoaded(true);
+          setEmployeeList(result);
+          // console.log(result);
+        },
+        (error) => {
+          setIsLoaded(true);
+          setError(error);
+        }
+      );
   }, []);
-
 
 
   if (error) {
@@ -92,12 +85,10 @@ const DataTableEmployee = () => {
   return (
 
     <div className="overflow-x-auto mt-5">
-      <p className='mb-3'>พบข้อมูลพนักงาน  รายการ</p>
-
-      <table className="w-full border-spacing-2">
+      <table className="table-auto border-collapse w-full">
         <thead>
           <tr className='sm1:text-xs lg:text-sm '>
-            <th className="px-4 py-2 bg-gray-800 text-gray-100 rounded-tl-lg w-5">ลำดับ</th>
+            <th className="px-4 py-2 bg-gray-800 text-gray-100 rounded-tl-lg">ลำดับ</th>
             <th className="px-4 py-2 bg-gray-800 text-gray-100">รหัสพนักงาน</th>
             <th className="px-4 py-2 bg-gray-800 text-gray-100">ชื่อพนักงาน</th>
             <th className="px-4 py-2 bg-gray-800 text-gray-100">แผนก</th>
@@ -107,12 +98,11 @@ const DataTableEmployee = () => {
           </tr>
         </thead>
         <tbody className="text-gray-700">
-          {employeeList.map((val, index) => {
-
+          {employeeList.map((val, index, row) => {
             return (
               <tr
-                className='sm1:text-xs lg:text-sm border-2'
-                key={val.IDEmployee}>
+              className='sm1:text-xs lg:text-sm border-2'
+              key={row.IDEmployee}>
                 <td className='boder px-2 py-2'>{index + 1}</td>
                 <td className='boder px-4 py-2'>{val.IDEmployee}</td>
                 <td className='boder px-4 py-2'>{val.name}</td>
@@ -127,34 +117,26 @@ const DataTableEmployee = () => {
                     <EditButton onClick={() => handleEditClick(val)} />
                   </td>
 
-                  <button className='bg-red-200 hover:text-red-200 border-red-200' onClick={() => { deleteEmployee(val.id) }}>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#d0021b" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
-                  </button>
+                  <button className='bg-red-700 hover:text-red-700 border-red-700' onClick={() => { deleteEmployee(val.id) }}>ลบข้อมูล</button>
                 </td>
               </tr>
             )
           })}
         </tbody>
 
-      </table >
-
-      {/* ***************** modals ****************************** */}
-      {
-        showModal && (
-          <EditForm employee={selectedEmployee} onClose={handleModalClose} />
-        )
-      }
+      </table>
+      {showModal && (
+        <EditForm employee={selectedEmployee} onClose={handleModalClose} />
+      )}
 
 
-      {
-        ViewModal && (
-          <ViewFrom employee={selectedEmployee} onClose={handleViewModalClose} />
-        )
-      }
-      {/* ******************* end modals ********************** */}
+      {ViewModal && (
+        <ViewFrom employee={selectedEmployee} onClose={handleViewModalClose} />
+      )}
 
 
-    </div >
+
+    </div>
   )
     ;
 };

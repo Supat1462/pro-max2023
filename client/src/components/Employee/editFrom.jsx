@@ -28,6 +28,7 @@ const EditForm = ({ employee, onClose }) => {
       .then(response => console.log(response.data))
       .catch(error => console.log(error));
     onClose();
+
     alert('แก้ไขข้อมูลพนักงานเรียบร้อยแล้ว');
   };
 
@@ -110,8 +111,8 @@ const EditForm = ({ employee, onClose }) => {
                     >
                       <option value={"default"}>--โปรดเลือกแผนกพนักงาน--</option>
                       <option value="Accounting & Finacial">Accounting and Finance</option>
-                      <option value="Human Resources">Human Resources</option>
-                      <option value="Information Technology">Information Technology</option>
+                      <option value="HR">HR</option>
+                      <option value="IT">IT</option>
                       <option value="Managment">Managment</option>
                       <option value="Marketing">Marketing</option>
                       <option value="Operation">Operation</option>
