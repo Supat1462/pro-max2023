@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom"
 import Home from './components/Home/Home';
 import Device from './components/Device/Device';
 import Employee from './components/Employee/Employee';
+import Setting from './components/Setting/Setting';
 import Footer from './components/Footer/Footer';
 
 
@@ -17,6 +18,7 @@ function App() {
         <Route path='/BorrowandReturn' element={<BorrowandReturn />} />
         <Route path='/Device' element={<Device />} />
         <Route path='/Employee' element={<Employee />} />
+        <Route path='/Setting' element={<Setting />} />
         
       </Routes>
 

@@ -5,10 +5,11 @@ import { Link } from 'react-router-dom'
 
 const navigation = [
   { name: 'Home', href: '/', current: true},
-  { name: 'Dashboard', href: '/Device', current: false },
+  { name: 'Dashboard', href: '/', current: false },
   { name: 'Borrow - Return', href: '/BorrowandReturn', current: false },
   { name: 'Device', href: '/Device', current: false },
   { name: 'Employee', href: '/Employee', current: false },
+  { name: 'Setting', href: '/Setting', current: false },
 ]
 
 

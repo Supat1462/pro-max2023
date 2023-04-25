@@ -42,7 +42,7 @@ function AddEmployee() {
         <div>
             <div className="px-4 py-5 sm:px-6">
                 <h3 className="lg:text-2xl sm1:text-xl mb-4 text-indigo-700 font-bold">เพิ่มมูลพนักงาน</h3>
-            </div>
+              </div>
             <form>
                 <div className="overflow-hidden shadow sm:rounded-md">
                     <div className="bg-white px-4 py-5 sm:p-6">
