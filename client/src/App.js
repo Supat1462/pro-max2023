@@ -6,7 +6,7 @@ import Device from './components/Device/Device';
 import Employee from './components/Employee/Employee';
 import Setting from './components/Setting/Setting';
 import Footer from './components/Footer/Footer';
-
+import Branch from './components/Setting/Branch'
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Route path='/Device' element={<Device />} />
         <Route path='/Employee' element={<Employee />} />
         <Route path='/Setting' element={<Setting />} />
+        <Route path='/Branch' element={<Branch />} />
         
       </Routes>
 

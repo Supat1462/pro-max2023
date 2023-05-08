@@ -206,7 +206,7 @@ const TableName = () => {
                     header={header}
                     globalFilter={globalFilter}
                 >
-                    <Column field="id" header="ลำดับ" sortable></Column>
+                    <Column field="id" header="ลำดับ"></Column>
                     <Column field="Emp_Code" header="รหัสพนักงาน" sortable></Column>
                     <Column field="NameTH" header="ชื่อจริง" sortable filterPlaceholder="Search by name"></Column>
                     <Column field="SurnameTH" header="นามสกุล" sortable></Column>

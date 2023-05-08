@@ -3,7 +3,7 @@ import AddEmployee from './AddEmployee';
 import ModalAddEmployee from './ModalAddEmployee';
 import DataTableEmployee from './DataTableEmployee';
 import TableName from './tableName';
-
+import { HiUserGroup } from "react-icons/hi";
 
 function Employee() {
 
@@ -22,11 +22,13 @@ function Employee() {
         <div className='mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 container mt-5 shadow-md rounded-lg py-5 mb-10'>
 
             <div className="heder">
-                <h1 className='lg:text-3xl font-bold text-indigo-700 sm1:text-2xl sm1:px-4'>Employee</h1>
+                <h1 className='lg:text-3xl font-bold text-indigo-700 sm1:text-2xl py-2 items-center flex gap-2'>Employee
+                    <HiUserGroup />
+                </h1>
                 <hr className='my-3' />
             </div>
 
-            <div className="sm1:px-3 ">
+            <div className="">
                 <button className="text-white font-bold py-2 px-4 rounded lg:text-base sm1:text-sm" onClick={handleOpenModal}>
                     เพิ่มข้อมูลพนักงาน
                 </button>
