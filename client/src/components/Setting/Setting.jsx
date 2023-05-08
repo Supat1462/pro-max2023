@@ -1,10 +1,7 @@
 import React from 'react';
 import { AiFillSetting } from "react-icons/ai";
+import Menu from './Menu';
 
-
-const links = [
-    {name: 'Branch', href: ''}
-]
 
 
 function Setting() {
@@ -20,7 +17,8 @@ function Setting() {
                 </span>
             </div>
             <hr />
-            
+
+            <Menu />
         </div>
     )
 }
